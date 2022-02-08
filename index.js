@@ -6,8 +6,6 @@ const db = require('wio.db')
 const moment = require('moment');
 require('./util/eventLoader')(client);
 
-const hook = new Discord.WebhookClient('926127295100489780', '92ZjojF0zAJY4jYSA8UYkJ-hG_654pygT36WbanGaYzGjyVLiFYDDIGMEGysiqdvj44w');
-
 client.on('ready', () => {
   console.log(` Aktiff!! ${client.user.tag}!`);
   client.user.setActivity('Duyuru', { type:'PLAYING'})
@@ -94,13 +92,13 @@ client.elevation = message => {
 
 client.on('guildMemberAdd', member => {
   // Rol
-  let rol = "920704584698200105"
+  let rol = "OTOROL ID" //Verilecek rol ID
 
   // Sunucuya Giren Kişiye Rol Verme
   member.roles.add(rol)
 
   // Hg Mesajı
-  client.channels.cache.get('920704806794981446').send(`${member} **Kişisine <@&${rol}> Rolünü Verdim, Hoşgeldin.**`)
+  client.channels.cache.get('HG MESAJ LOG KANAL ID').send(`${member} **Kişisine <@&${rol}> Rolünü Verdim, Hoşgeldin.**`)
 })
 
 //---Bu Kod main'e atılacaktır. 
@@ -121,7 +119,7 @@ client.on('message', async message => {
 
     client.on("message", async message => { 
       if(message.channel.type == "dm"){
-      const csl = client.channels.cache.get('928008623584575528')
+      const csl = client.channels.cache.get('DMDEN GELEN LOG ID')
       const cse = new Discord.MessageEmbed()
       .setTitle("Bota Bir DM Geldi")
       .setColor("BLUE")
@@ -135,13 +133,13 @@ client.on('message', async message => {
       })
       
       client.on("message", message => {
-        if(message.channel.id !== "914267469449953320") return;
+        if(message.channel.id !== "SİLİNEN MESAJLAR") return;
         message.delete();
     });
 
     client.on('message', message => {
       if(message.author == client.user) return;
-      const myChan = client.channels.cache.get('924309452222509096');
+      const myChan = client.channels.cache.get('OTO İSİM DEĞİŞTİRME KANAL ID');
       if(message.channel != myChan) return;
       if(message.content.length > 32) return;
       message.guild.members.cache.get(message.author.id).setNickname(message.content).catch(() => {
@@ -371,10 +369,6 @@ client.on("messageDelete", async (message, channel) => {
 
 //---Bu Kod main'e atıalcaktır atılacaktır. 
 //###CodeMareFi tarafından hazırlanmıştır - - - Ekleyen //###CMF
-
-client.on('ready', () => {
-  client.channels.cache.get('KANAL İD').join();
-})
 
 client.on('ready', () => {
   client.channels.cache.get('KANAL İD').join();
